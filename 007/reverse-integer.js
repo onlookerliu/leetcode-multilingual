@@ -8,11 +8,10 @@ var reverse = function (x) {
     var ans;
     var arr = x.toString().split('');
     if (x < 0)
-        arr.shift();  // remove '-'
+        arr.shift();
     ans = Number(arr.reverse().join(''));
     if (x < 0)
         ans *= -1;
-    // console.log(minn, maxn);
     if (ans < minn || ans > maxn)
         return 0;
     else
