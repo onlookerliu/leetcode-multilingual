@@ -6,7 +6,7 @@
  *     ListNode(int x) { val = x; } 
  * }
  */
-class Solution {
+class AddTwoNumebers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode p = l1, q = l2, dummyHead = new ListNode(0), curr = dummyHead;
         int carry = 0;
