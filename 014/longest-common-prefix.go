@@ -7,9 +7,10 @@ func longestCommonPrefix(strs []string) string {
 		return ""
 	}
 
-	func loop(i int) int {
+	var loop func(int) int
+	loop = func(i int) int {
 		if i == len(strs[0]) {
-			return i;
+			return i
 		}
 
 		c := strs[0][i]
@@ -19,7 +20,7 @@ func longestCommonPrefix(strs []string) string {
 			}
 		}
 
-		return loop(i+1)
+		return loop(i + 1)
 	}
 
 	longestCommonPrefixLength := loop(0)
