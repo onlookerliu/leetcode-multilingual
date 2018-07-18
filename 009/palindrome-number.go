@@ -1,3 +1,7 @@
+package main
+
+import "fmt"
+
 func isPalindrome(x int) bool {
 	if x < 10 && x >= 0 {
 		return true
@@ -13,4 +17,9 @@ func isPalindrome(x int) bool {
 	}
 
 	return x == y || x == y/10
+}
+
+func main() {
+	x := 123
+	fmt.Println(isPalindrome(x))
 }
