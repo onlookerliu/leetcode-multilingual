@@ -1,3 +1,16 @@
+/**
+ * Definition for singly-linked list.
+ * class ListNode(var _x: Int = 0) {
+ *   var next: ListNode = null
+ *   var x: Int = _x
+ * }
+ */
+
+class ListNode(var _x: Int = 0) {
+    var next: ListNode = null
+    var x: Int = _x
+}
+
 object MergeTwoSortedLists {
     def mergeTwoLists(l1: ListNode, l2: ListNode): ListNode = {
         val dummyHead = new ListNode(0)
