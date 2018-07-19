@@ -3,71 +3,59 @@
  * @param {number} target
  * @return {number[][]}
  */
-let fourSum = function (nums, target) {
-    let results = [];
-    nums.sort(function (a, b) {
-        return a - b
-    });
-    for (let i = 0; i < nums.length - 3; i++) {
-        while (i > 0 && i < nums.length - 3 && nums[i] === nums[i - 1]) {
-            i++;
-        }
-        for (let j = i + 1; j < nums.length - 2; j++) {
-            while (j > i + 1 && j < nums.length - 2 && nums[j] === nums[j - 1]) {
-                j++;
-            }
-            let low = j + 1;
-            let high = nums.length - 1;
-            let newTarget = target - (nums[i] + nums[j]);
-            while (low < high) {
-                let partialSum = nums[low] + nums[high];
-                if (partialSum === newTarget) {
-                    results.push([nums[i], nums[j], nums[low], nums[high]]);
-                    high--;
-                    low++;
-                    while (low < high && nums[low] === nums[low - 1]) {
-                        low++;
-                    }
-                    while (low < high && nums[high] === nums[high + 1]) {
-                        high--;
-                    }
-                } else if (partialSum > newTarget) {
-                    high--;
+var fourSum = function (nums, target) {
+    nums.sort((a, b) => a - b);
+    let len = nums.length;
+    let res = new Set();
+    
+    for (let i = 0; i < len-3; i++) {
+        for (let j = i + 1; j < len - 2; j++) {
+            let [left, right] = [j+1, len-1];
+            while (left < right) {
+                let sum = nums[i] + nums[j] + nums[left] + nums[right];
+                if (sum == target) {
+                    let tmp = [];
+                    tmp.push(nums[i]); tmp.push(nums[j]); tmp.push(nums[left]); tmp.push(nums[right]);
+                    if (!_contains(res, tmp))
+                        res.push(tmp);
+                    left += 1;
+                    right -= 1;
+                } else if (s < target) {
+                    left += 1;
                 } else {
-                    low++;
+                    right -= 1;
                 }
             }
         }
     }
-    return results;
+    return res;
 };
 
+// TODO: write the contains function
 
-let list0 = fourSum([1, 0, -1, 0, -2, 2], 0);
-let set = new Set();
-set.add([-1, 0, 0, 1]);
-set.add([-2, -1, 1, 2]);
-set.add([-2, 0, 0, 2]);
-if (list0.length === 3) {
-    console.log("pass")
-} else {
-    console.error("failed")
-}
-if (new Set(list0).toString() === set.toString()) {
-    console.log("pass")
-} else {
-    console.error("failed")
+Array.prototype.contains = function(obj) {
+    let i = this.length;
+    while (i--) {
+        let _obj = this[i];
+
+        for (let [k, v] of _obj.entries()) {
+            
+        }
+    }
+    return false;
 }
 
-set.clear();
-let list1 = fourSum([-5, 5, 4, -3, 0, 0, 4, -2], 4);
-set.add([-5, 0, 4, 5]);
-set.add([-3, -2, 4, 5]);
-if (new Set(list1).toString() === set.toString()) {
-    console.log("pass")
-} else {
-    console.error("failed")
-}
+vendors = [
+    {
+        Name: 'Magenic',
+        ID: 'ABC'
+    },
+    {
+        Name: 'Microsoft',
+        ID: 'DEF'
+    }
+];
 
-console.log(fourSum([-3, -2, -1, 0, 0, 1, 2, 3], 0));
-console.log(fourSum([-1, 0, -5, -2, -2, -4, 0, 1, -2], -9));
+if (vendors.some(e => e.name === 'Magenic')) {
+    /* vendors contains the element we're looking for */
+}
