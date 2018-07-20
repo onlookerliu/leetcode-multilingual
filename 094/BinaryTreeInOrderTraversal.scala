@@ -2,7 +2,7 @@ object BinaryTreeInOrderTraversal {
   def inorderTraversal(root: TreeNode): List[Int] = {
     var ans = List.empty[Int]
     def dfs(root: TreeNode): Unit = {
-      if (null == root) return
+      if (null == root) Unit
       else {
         dfs(root.left)
         ans = ans :+ root.value
