@@ -36,13 +36,13 @@ function trap(height) {
     let leftMaxHeight = [];
     let rightMaxHeight = [];
     height.reduce((maxn, h) => {
-        leftMaxHeight.push(maxn);
         maxn = Math.max(maxn, h);
+        leftMaxHeight.push(maxn);
         return maxn;
     }, 0);
     height.reduceRight((maxn, h) => {
-        rightMaxHeight.unshift(maxn);
         maxn = Math.max(maxn, h);
+        rightMaxHeight.unshift(maxn);
         return maxn;
     }, 0);
 
