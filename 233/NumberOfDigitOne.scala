@@ -18,7 +18,7 @@ object NumberOfDigitOne {
   }
 
   def main(args: Array[String]): Unit = {
-    val n = 13
+    val n = 13  // large number may cause overflow
     println(countDigitOne(n))
   }
 }
