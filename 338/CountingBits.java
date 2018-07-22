@@ -9,7 +9,7 @@ public class CountingBits {
         int index = 1, segment = 1;
         while (index <= num) {
             for (int i = 0; i < Integer.min(segment, num + 1 - index); i++)
-                results[index + 1] = 1 + results[i];
+                results[index + i] = 1 + results[i];
             index += segment;
             segment <<= 1;
         }
