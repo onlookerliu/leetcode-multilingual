@@ -11,10 +11,11 @@ object TwoSumIVInputIsBST {
     def dfs(node: TreeNode): Boolean = {
       if (node == null) false
       else {
-        if (s.contains(k - node.value))
-          true
-        s = s + node.value
-        dfs(node.left) || dfs(node.right)
+        if (s.contains(k - node.value)) true
+        else {
+          s = s + node.value
+          dfs(node.left) || dfs(node.right)
+        }
       }
     }
 
