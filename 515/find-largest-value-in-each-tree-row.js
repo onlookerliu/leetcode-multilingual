@@ -10,18 +10,15 @@
  * @return {number[]}
  */
 var largestValues = function (root) {
-    let maxn = [];
-
-    let getMax = (a, b = -Number.MAX_VALUE) => Math.max(a, b);
-
-    let dfs = (node, step) => {
+    let res = [];
+    const getMax = (a, b = -Infinity) => Math.max(a, b);
+    const dfs = (node, depth) => {
         if (!node) return;
-        maxn[step] = getMax(node.val, maxn[step]);
-        dfs(node.left, step + 1);
-        dfs(node.right, step + 1);
+        res[depth] = getMax(node.val, res[depth]);
+        dfs(node.left, depth + 1);
+        dfs(node.right, depth + 1);
     };
 
     dfs(root, 0);
-    return maxn;
+    return res;
 };
-
