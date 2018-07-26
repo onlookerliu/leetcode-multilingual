@@ -6,7 +6,7 @@ object DecodeWaysII {
     val threshold = math.pow(10, 9).toLong + 7L
     def numDecodingsForIndex(i: Int) = if (i < 0) 1L else dp(i)
 
-    (o until len).foreach { i =>
+    (0 until len).foreach { i =>
       s(i) match {
         case '*' => dp(i) = numDecodingsForIndex(i - 1) * 9
           if (i - 1 >= 0) s(i-1) match {
