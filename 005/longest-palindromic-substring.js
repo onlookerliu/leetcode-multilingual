@@ -28,3 +28,28 @@ function searchPalindrome(s, left, right) {
 }
 
 console.log(longestPalindrome("babad"));
+
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var longestPalindrome = function (s) {
+    let res = "";
+    let len = s.length;
+    if (!len) return res;
+    let maxLen = 0;
+    let dp = [...Array(len)].map(r => Array(len).fill(0));
+    for (let i = len - 1; i >= 0; i--) {
+        for (let j = i + 1; j < len; j++) {
+            if (s.charAt(i) == s.charAt(j) && (j - i <= 2 || dp[i + 1][j - 1])) {
+                dp[i][j] = 1;
+                if (j - i + 1 > maxLen) {
+                    maxLen = j - i + 1;
+                    res = s.substring(i, j + 1);
+                }
+            }
+        }
+    }
+    return res;
+};
