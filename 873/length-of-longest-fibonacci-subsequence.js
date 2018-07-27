@@ -22,3 +22,27 @@ var lenLongestFibSubseq = function (A) {
     }
     return ans;
 };
+
+function lenLongestFibSubseq(A) {
+    let len = A.length;
+    let s = new Set();
+    for (let item of A) {
+        s.add(item);
+    } 
+    let ans = 0;
+    for (let i = 0; i < len; i++) {
+        for (let j = i+1; j < len; j++) {
+            let [a, b, c] = [A[i], A[j], a+b];
+            let c = a + b;
+            let l = 2;
+            while (s.has(c)) {
+                a = b;
+                b = c;
+                c = a+b;
+                l++;
+                ans = l > ans ? l : ans;
+            }
+        }
+    }
+    return ans;
+}
