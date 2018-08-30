@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func countingBits(num int) []int {
+	res := make([]int, num+1)
+	for i := 1; i <= num; i++ {
+		res[i] = res[i>>1] + i&1
+	}
+	return res
+}
+
+func main() {
+	num := 5
+	fmt.Println(countingBits(num))
+}
