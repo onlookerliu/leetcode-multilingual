@@ -2,27 +2,27 @@
  * @param {number[]} nums
  * @return {number}
  */
-var findLHS = function (nums) {
-    const hash = {};
-    for (let num of nums) {
-        hash[num] = ~~hash[num] + 1;
-    }
+// var findLHS = function (nums) {
+//     const hash = {};
+//     for (let num of nums) {
+//         hash[num] = ~~hash[num] + 1;
+//     }
 
-    console.log(hash);
+//     console.log(hash);
 
-    let max = 0;
-    for (let num in hash) {
-        let c1 = hash[num];
-        let c2 = ~~hash[num + 1];
-        console.log(c2);
-        if (c2 > 0) {
-            let t = c1 + c2;
-            if (max < t) max = t;
-        }
-    }
+//     let max = 0;
+//     for (let num in hash) {
+//         let c1 = hash[num];
+//         let c2 = ~~hash[num + 1]; // error
+//         console.log(c2);
+//         if (c2 > 0) {
+//             let t = c1 + c2;
+//             if (max < t) max = t;
+//         }
+//     }
 
-    return max;
-};
+//     return max;
+// };
 
 var findLHS = function(nums) {
     const hash = new Map();
