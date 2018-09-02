@@ -20,7 +20,6 @@ func isLineOverlap(a, b []int) bool {
 }
 
 func main() {
-	// rec1 = [0,0,2,2], rec2 = [1,1,3,3]
 	rec1 := []int{0, 0, 2, 2}
 	rec2 := []int{1, 1, 3, 3}
 	fmt.Println(isRectangleOverlap(rec1, rec2))
