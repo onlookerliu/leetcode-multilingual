@@ -1,9 +1,4 @@
-package main
-
-import (
-	"fmt"
-	"strings"
-)
+import "strings"
 
 func mostCommonWord(paragraph string, banned []string) string {
 	isBanned := make(map[string]bool)
@@ -31,6 +26,10 @@ func mostCommonWord(paragraph string, banned []string) string {
 		}
 	}
 
+	tail := res[len(res)-1]
+	if tail == '.' || tail == '!' || tail == '?' || tail == '\'' || tail == ';' || tail == ',' {
+		return res[:len(res)-1]
+	}
 	return res
 }
 
@@ -47,12 +46,4 @@ func replace(s string) string {
 	}
 
 	return s
-}
-
-func main() {
-	// paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
-	// banned = ["hit"]
-	paragraph := "Bob hit a ball, the hit BALL flew far after it was hit."
-	banned := []string{"hit"}
-	fmt.Println(mostCommonWord(paragraph, banned))
 }
