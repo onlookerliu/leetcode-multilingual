@@ -11,7 +11,7 @@ object MedianOfTwoSortedArrays {
         }
     }
 
-    def findKth(nums1: Array[Int], m: Int, nums2: Array[Int], n: Int, k: Int): Int = {
+    def findKth(nums1: Array[Int], m: Int, nums2: Array[Int], n: Int, k: Int): Double = {
         if (m > n) {
             return findKth(nums2, n, nums1, m, k)
         }
