@@ -6,21 +6,29 @@
 var fourSum = function (nums, target) {
     nums.sort((a, b) => a - b);
     let len = nums.length;
-    let res = new Set();
-    
-    for (let i = 0; i < len-3; i++) {
+    let res = [];
+
+    for (let i = 0; i < len - 3; i++) {
+        if (i > 0 && nums[i] == nums[i - 1]) {
+            continue;
+        }
         for (let j = i + 1; j < len - 2; j++) {
-            let [left, right] = [j+1, len-1];
+            if (j > i + 1 && nums[j] == nums[j - 1]) {
+                continue;
+            }
+
+            let [left, right] = [j + 1, len - 1];
             while (left < right) {
                 let sum = nums[i] + nums[j] + nums[left] + nums[right];
                 if (sum == target) {
-                    let tmp = [];
-                    tmp.push(nums[i]); tmp.push(nums[j]); tmp.push(nums[left]); tmp.push(nums[right]);
-                    if (!_contains(res, tmp))
-                        res.push(tmp);
-                    left += 1;
-                    right -= 1;
-                } else if (s < target) {
+                    let tmp = [nums[i], nums[j], nums[left], nums[right]];
+                    // tmp.push(nums[i]);
+                    // tmp.push(nums[j]);
+                    // tmp.push(nums[left]);
+                    // tmp.push(nums[right]);
+                    res.push(tmp);
+                    [left, right] = next(nums, left, right);
+                } else if (sum < target) {
                     left += 1;
                 } else {
                     right -= 1;
@@ -31,31 +39,18 @@ var fourSum = function (nums, target) {
     return res;
 };
 
-// TODO: write the contains function
-
-Array.prototype.contains = function(obj) {
-    let i = this.length;
-    while (i--) {
-        let _obj = this[i];
-
-        for (let [k, v] of _obj.entries()) {
-            
+// find the next suitable left and right value
+const next = function (nums, left, right) {
+    while (left < right) {
+        if (nums[left] == nums[left + 1]) {
+            left++;
+        } else if (nums[right] == nums[right - 1]) {
+            right--;
+        } else {
+            left++;
+            right--;
+            return [left, right];
         }
     }
-    return false;
-}
-
-vendors = [
-    {
-        Name: 'Magenic',
-        ID: 'ABC'
-    },
-    {
-        Name: 'Microsoft',
-        ID: 'DEF'
-    }
-];
-
-if (vendors.some(e => e.name === 'Magenic')) {
-    /* vendors contains the element we're looking for */
-}
+    return [left, right];
+};
