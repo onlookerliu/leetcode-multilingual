@@ -3,23 +3,25 @@
  * @return {string[]}
  */
 var letterCombinations = function (digits) {
-    const phone = {'2': "abc", '3': "def", '4': "ghi", '5': "jkl", '6': "mno", '7': "pqrs", '8': "tuv", '9': "wxyz"};
+    const m = { '2': ["a", "b", "c"], '3': ["d", "e", "f"], '4': ["g", "h", "i"], '5': ["j", "k", "l"], '6': ["m", "n", "o"], '7': ["p", "q", "r", "s"], '8': ["t", "u", "v"], '9': ["w", "x", "y", "z"] };
 
-    if (!digits.length)
-        return null;
-    // return digits.split('').reduce((ls, digit) => {
-    //     phone[digit].split('').map(char => ls.map(e => e + char));
-    // }, [""]);
+    const len = digits.length;
+    let ret = [""];
+    if (len == 0)
+        return [];
 
-    let ls = [""];
-    for (let digit of digits) {
-        phone[digit].split('').forEach(char => {
-            console.log(ls);
-            
-            ls = ls.map(e => e + char);
-        });
+    for (let i = 0; i < len; i++) {
+        let temp = [];
+        for (let j = 0; j < ret.length; j++) {
+            for (let k = 0; k < m[digits[i]].length; k++) {
+                temp.push(ret[j] + m[digits[i]][k]);
+            }
+        }
+
+        ret = temp;
     }
-    return ls;
+
+    return ret;
 };
 
 let digits = "23";
