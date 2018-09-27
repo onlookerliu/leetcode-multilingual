@@ -23,3 +23,13 @@ class SwapNodesInPairs {
         return dummyHead.next
     }
 }
+
+class SwapNodesInPairs {
+    fun swapPairs(head: ListNode?): ListNode? {
+        if (head == null) return null
+        val second = head.next ?: return head
+        head.next = swapPairs(second.next)
+        second.next = head
+        return second
+    }
+}

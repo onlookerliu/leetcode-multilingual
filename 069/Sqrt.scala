@@ -1,4 +1,4 @@
-object SqrtX {
+object Sqrt {
   def mySqrt(x: Int): Int = {
     @annotation.tailrec
     def newton(guess: Int): Int = {

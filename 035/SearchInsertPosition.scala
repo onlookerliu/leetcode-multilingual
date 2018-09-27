@@ -1,5 +1,3 @@
-package leetcode
-
 object SearchInsertPosition {
   def searchInsert(nums: Array[Int], target: Int): Int = {
     var i: Int = 0
