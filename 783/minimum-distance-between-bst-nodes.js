@@ -28,3 +28,18 @@ var minDiffInBST = function (root) {
     }
     return minDiff;
 };
+
+var minDiffInBST = function (root) {
+    let ans = Infinity, prev = null;
+
+    function scan(node) {
+        if (node === null) return;
+        scan(node.left);
+        if (prev !== null) ans = Math.min(ans, node.val - prev);
+        prev = node.val;
+        scan(node.right);
+    }
+
+    scan(root);
+    return ans;
+};
