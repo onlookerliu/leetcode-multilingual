@@ -1,0 +1,1 @@
+select a.class from (select class, count(class) from (select distinct student, class from courses) as b group by class having count(class) >= 5) as a
