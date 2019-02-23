@@ -8,5 +8,5 @@ TEST_CASE("reverse integer test 1", "reverse")
     REQUIRE(s.reverse(123) == 321);
     REQUIRE(s.reverse(-123) == -321);
     REQUIRE(s.reverse(10100) == 101);
-    REQUIRE(s.reverse(10000000003) == 0);
+    REQUIRE(s.reverse(-2147483648) == 0);
 }

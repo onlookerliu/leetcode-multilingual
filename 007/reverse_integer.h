@@ -5,11 +5,14 @@ class Solution
   public:
     int reverse(int x)
     {
-        long res = 0;
-        do
+        long long int ans = 0;
+        while (x)
         {
-            res = res * 10 + x % 10;
-        } while (x /= 10);
-        return res > INT_MAX ? 0 : res;
+            ans = ans * 10 + x % 10;
+            x /= 10;
+        }
+        if (ans < INT_MIN || ans > INT_MAX)
+            return 0;
+        return ans;
     }
 };
