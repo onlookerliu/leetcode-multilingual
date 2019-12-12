@@ -14,10 +14,10 @@ class TwoSum {
                 if (idx < i) {
                     res[0] = idx;
                     res[1] = i;
-                    return re;
-                } 
+                    return res;
+                }
             }
         }
-        return re;
+        return res;
     }
 }

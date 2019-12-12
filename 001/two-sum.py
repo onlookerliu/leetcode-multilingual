@@ -15,6 +15,6 @@ class Solution:
                     return [index, i]
 
         return [-1, -1]
-        
+
 
 print(Solution().twoSum([2, 7, 11, 15], 9))
